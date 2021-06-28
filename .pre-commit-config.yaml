@@ -1,0 +1,30 @@
+repos:
+  - repo: git://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: detect-private-key
+      - id: pretty-format-json
+        args:
+          - --autofix
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: packer_fmt
+        name: Packer Format
+        entry: packer fmt
+        language: system
+        pass_filenames: false
+        args:
+          - '.'
+  - repo: local
+    hooks:
+      - id: packer_validate
+        name: Packer Validate
+        entry: packer validate
+        language: system
+        pass_filenames: false
+        args:
+          - '.'
