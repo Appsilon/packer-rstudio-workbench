@@ -1,0 +1,16 @@
+---
+- name: Build AMI for RStudio Server
+  hosts: localhost
+  gather_facts: true
+  become: true
+  roles:
+    - base
+    - role: r
+      vars:
+        r_install_dev: true
+        r_install:
+          - r-recommended
+    - role: rstudio-workbench
+      vars:
+        rstudio_server_install:
+          - r-base

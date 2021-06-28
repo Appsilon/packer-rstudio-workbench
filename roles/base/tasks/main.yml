@@ -1,0 +1,19 @@
+---
+- name: Update Cache
+  apt:
+    name: '*'
+    update_cache: "yes"
+    state: latest
+
+- name: Install essentials
+  apt:
+    name:
+      - cron
+      - git
+      - logrotate
+      - python2
+      - python3
+      - python3-pip
+      - python3-setuptools
+      - python3-wheel
+    state: present

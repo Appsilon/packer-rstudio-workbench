@@ -6,3 +6,10 @@ crash.log
 
 # For built boxes
 *.box
+
+# macOS
+.DS_Store
+
+# galaxy roles
+roles/r/**/*
+roles/rstudio-workbench/**/*

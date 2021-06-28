@@ -1,0 +1,26 @@
+version: '2'
+
+env:
+  TERM: screen-256color
+  AWS_DEFAULT_REGION: eu-west-1
+
+tasks:
+  default:
+    cmds:
+    - task: build
+
+  build:
+    desc: Bake AMI.
+    cmds:
+    - task: install-dependencies
+    - task: run-packer
+
+  install-dependencies:
+    desc: Install Ansible roles from Ansible Galaxy
+    cmds:
+    - ansible-galaxy install --roles-path ./roles --role-file ./requirements.yml
+
+  run-packer:
+    desc: Run Packer.
+    cmds:
+    - aws-vault exec appsilon-infra-sso -- packer build ami.pkr.hcl

@@ -1,0 +1,7 @@
+- src: oefenweb.rstudio_server
+  version: v2.7.1
+  name: rstudio-workbench
+
+- src: oefenweb.latest_r
+  version: v3.1.1
+  name: r
