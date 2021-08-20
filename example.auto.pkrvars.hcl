@@ -1,2 +1,2 @@
-r_version       = "4.1.0"
+r_version       = "40"
 rstudio_version = "1.4.1717"

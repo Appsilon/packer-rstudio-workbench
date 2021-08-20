@@ -11,14 +11,14 @@ variable "r_version" {
 }
 
 variable "rstudio_version" {
-  description = "Version of RStudio Server to install on AMI"
+  description = "Version of RStudio Workbench to install on AMI"
   type        = string
   default     = "1.4.1717"
 }
 
-source "amazon-ebs" "rstudio-server" {
-  ami_description = "RStudioServer v${var.rstudio_version} with R v${var.r_version}"
-  ami_name        = "RStudioServer-${var.rstudio_version}-R-${var.r_version}-${formatdate("DDMMMYYYY-hhmmssZZZ", timestamp())}"
+source "amazon-ebs" "rstudio-workbench" {
+  ami_description = "RStudioWorkbench v${var.rstudio_version} with R v${var.r_version}"
+  ami_name        = "RStudioWorkbench-${var.rstudio_version}-R-${var.r_version}-${formatdate("DDMMMYYYY-hhmmssZZZ", timestamp())}"
   ami_regions     = [var.aws_region]
   ena_support     = "true"
   encrypt_boot    = "true"
@@ -37,21 +37,21 @@ source "amazon-ebs" "rstudio-server" {
 
 
   run_volume_tags = {
-    Name = "rstudio-server-ami"
+    Name = "rstudio-workbench-ami"
   }
 
   run_tags = {
-    Name = "rstudio-server-ami"
+    Name = "rstudio-workbench-ami"
   }
   tags = {
-    RStudioServerVersion = var.rstudio_version
-    RVersion             = var.r_version
-    Name                 = "rstudio-server-ami"
+    RStudioWorkbenchVersion = var.rstudio_version
+    RVersion                = var.r_version
+    Name                    = "rstudio-workbench-ami"
   }
 }
 
 build {
-  sources = ["source.amazon-ebs.rstudio-server"]
+  sources = ["source.amazon-ebs.rstudio-workbench"]
 
   provisioner "shell" {
     inline = [
