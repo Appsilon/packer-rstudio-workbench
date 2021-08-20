@@ -31,7 +31,7 @@ source "amazon-ebs" "rstudio-server" {
       virtualization-type = "hvm"
     }
     most_recent = true
-    owners      = ["099720109477"] # appsilon-infra account
+    owners      = ["099720109477"] # canonical
   }
   ssh_username = "ubuntu"
 
